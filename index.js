@@ -18,7 +18,7 @@ var phantomJsBinary = [ "node_modules/phantomjs/bin/phantomjs", path.join( __dir
 var tempNightwatchDir = "temp";
 
 // NOTE: These may change in future versions of selenium & phantom
-var seleniumStartedRegex = new RegExp( "INFO\\:osjs\\.AbstractConnector\\:Started\\s+SocketConnector" );
+var seleniumStartedRegex = new RegExp( "INFO\\:osjs\\.ServerConnector\\:\\.+Started\\s+ServerConnector" );
 var phantomStartedRegex = new RegExp( "HUB\\s+Register\\s+\\-\\s+register\\s+\\-\\s+Registered\\s+with\\s+grid\\s+hub(.*?)\\s+\\(ok\\)" );
 
 

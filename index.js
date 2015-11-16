@@ -25,6 +25,7 @@ var phantomStartedRegex = new RegExp( "HUB\\s+Register\\s+\\-\\s+register\\s+\\-
 var testAutomation = function( options ) {
 	options = options || {};
 
+	var testcase = options.testcase;
 	var subProcesses = [];
 
 	var seleniumPort = 0;
@@ -217,6 +218,10 @@ var testAutomation = function( options ) {
 		var configFile = prepareNightwatchConfig();
 		var nightwatchPath = ( options.nightwatch && options.nightwatch.path ) ? options.nightwatch.path : pickExisting( nightwatchBinary );
 		var args = [ nightwatchPath, '--env', 'default', '--config', configFile ];
+		
+		if (testcase)
+			args.push('--testcase', testcase);
+		
 		gutil.log('Starting Nightwatch test runner...');
 		var p = spawn( 'node', args );
 		p.stderr.pipe( process.stderr );

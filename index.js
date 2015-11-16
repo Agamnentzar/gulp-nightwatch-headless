@@ -25,6 +25,7 @@ var phantomStartedRegex = new RegExp( "HUB\\s+Register\\s+\\-\\s+register\\s+\\-
 var testAutomation = function( options ) {
 	options = options || {};
 
+	var test = options.test;
 	var testcase = options.testcase;
 	var subProcesses = [];
 
@@ -219,6 +220,8 @@ var testAutomation = function( options ) {
 		var nightwatchPath = ( options.nightwatch && options.nightwatch.path ) ? options.nightwatch.path : pickExisting( nightwatchBinary );
 		var args = [ nightwatchPath, '--env', 'default', '--config', configFile ];
 		
+		if (test)
+			args.push('--test', test);
 		if (testcase)
 			args.push('--testcase', testcase);
 		
